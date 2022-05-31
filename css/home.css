@@ -1,0 +1,96 @@
+/*All*/
+body
+{
+    background-color: #f4f4f4;
+}
+
+/*NavBar*/
+#navbar
+{
+    background-color: #ff8c1a;
+    padding-bottom: 20px 0;
+    font-size: 20px;
+}
+
+.container
+{
+    padding: 40px 0;
+
+}
+
+img
+{
+    align-self: center;
+    margin-left: 12%;
+}
+.navbar-nav
+{
+    margin-right: 12%;
+}
+
+#logout-menu
+{
+    align-items: center;
+    color: black;
+}
+
+/*Table*/
+#cadaster-menu
+{
+    font-size: 15px;
+    color: white;
+    font-style: oblique;
+    background-color: #ff8c1a;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#cadaster-menu:hover
+{
+    text-decoration: none;
+    color: #ff8c1a;
+    background-color: white;
+    border: 1px solid #ff8c1a;
+}
+
+.table
+{
+    background-color: white;
+}
+
+/*Pagination*/
+.pagination
+{
+    justify-content: center;
+
+}
+.pagination a
+{
+    color: black;
+}
+
+.pagination a:hover:not(.active)
+{
+    color: #ff8c1a;
+    background-color: black;
+}
+
+.pagination a:nth-child(3)
+{
+    color: white;
+    background-color: #ff8c1a;
+}
+
+
+.pagination a:focus
+{
+    box-shadow: none;
+}
+
+
+
+.fa-solid
+{
+    font-size: 20px;
+}
+
