@@ -1,31 +1,37 @@
 /*Login*/
-#form-area{
+#form-area
+{
     margin:auto;
     margin-top: 10%;
     text-align: center;
     max-width: 100%;
 }
   
-#form{
+#form
+{
     margin: 0 auto;
     float: none;
     width: 35%;
 }
 
-#logomarca{
+#logomarca
+{
     margin-bottom:15%;
     max-width: 70%;
 }
-.form-group{
+.form-group
+{
     text-align: left;
 }
 
-.form-group input:focus{
+.form-group input:focus
+{
     border: 2px solid;
     box-shadow: none;
 }
 
-#login{
+#login
+{
     background-color: #ff8c1a;
     color: white;
     border-radius: 30px;
@@ -34,33 +40,40 @@
     transition: .5s;
 }
 
-#login:hover{
+#login:hover
+{
     background-color: white;
     color: #ff8c1a;
 }
-#login:focus{
+#login:focus
+{
     box-shadow: none;
 }
 
-#teste{
+#teste
+{
     display: flex;
     align-items: center;
 }
-#teste hr{
+#teste hr
+{
     flex: 1;
     border-color: #ff8c1a;
 }
 
-#teste p{
+#teste p
+{
     padding: 10px 10px 0 10px;
 }
 
-form, a{
+form, a
+{
     color: black;
     text-decoration: none;
 }
 
-#design {
+#design 
+{
     background-color: rgb(255, 140, 26);
     position: absolute;
     left: 0px;
@@ -68,5 +81,5 @@ form, a{
     width: 1920px;
     height: 47px;
     z-index: 6;
-  }
+}
   
