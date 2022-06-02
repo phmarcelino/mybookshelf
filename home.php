@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(!isset($_SESSION['user'])){
+  header('location: mybookshelfproject/index.php');
+}
+$user = $_SESSION['user'];
+
+?>
+
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
@@ -17,9 +26,9 @@
                 <nav class="navbar fixed-top" id="navbar"> 
                     <img src="img/Camada 1.png" id="logomarca" alt="Mybookshelf">  
                     <div class="navbar-nav">
-                        <a href="#" id="logout-menu">
+                        <a href="/mybookshelfproject/PHP/session.php" id="logout-menu">
                             Logout
-                            <i class="fa-solid fa-arrow-right-from-bracket" id="logout-arrow"></i>
+                            <i class="fa-solid fa-arrow-right-from-bracket" id="logout-ar\row"></i>
                         </a>
                     </div>
                 </nav>
@@ -27,7 +36,9 @@
         </header>
     <div class="container">
         <h1>
-            Seja Bem-Vindo(a) "Nome Usuário"
+          <?php
+          echo "Seja bem-vindo(a) $user";
+          ?>
         </h1>
     </div>
 
