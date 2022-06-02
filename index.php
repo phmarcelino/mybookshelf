@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if(isset($_SESSION['message']))
+  {
+    $message = $_SESSION['message'];
+  }
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -21,7 +28,13 @@
             <div class="container">
                 <div id="form">
                     <img src="img/Camada 1.png" id="logomarca" alt="">
-                    <form action="">
+                    <?php 
+                      if(isset($message))
+                      {
+                        echo $message;
+                      }
+                    ?>
+                    <form action="/mybookshelfproject/PHP/login-verify.php" method="post">
                         <div class="form-group">
                           <label for="email-input">E-mail</label>
                           <input type="email" class="form-control" id="email-input" name="email" placeholder="Insira seu e-mail">
