@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(!isset($_SESSION['user'])){
+  header('location: /mybookshelfproject/index.php');
+}
+if(isset($_SESSION['message'])){
+$erorr = $_SESSION['message'];
+}
+?>
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
@@ -6,7 +15,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="css/cadastro.css">
     <script src="https://kit.fontawesome.com/cfd199cf55.js" crossorigin="anonymous"></script>
-    <title>Mybookshelf Login</title>
+    <title>Mybookshelf Cadastro</title>
   </head>
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -21,7 +30,7 @@
                 <nav class="navbar fixed-top" id="navbar"> 
                     <img src="img/Camada 1.png" id="logomarca" alt="Mybookshelf">  
                     <div class="navbar-nav">
-                        <a href="#" id="logout-menu">
+                        <a href="/mybookshelfproject/PHP/session.php" id="logout-menu">
                             Logout
                             <i class="fa-solid fa-arrow-right-from-bracket" id="logout-arrow"></i>
                         </a>
@@ -34,42 +43,50 @@
                 Cadastro de Livro
             </h1>
         </div>
-        <form action="home.html"container">
+        <div>
+            <?php
+            if(isset($erorr))
+            {
+                echo $erorr;
+            }
+            ?>
+        </div>
+        <form action="/mybookshelfproject/PHP/book-register.php" method="post" class="container">
             <div class="form-group col-md-8 offset-md-2">
                 <label for="title-input">Título</label>
-                <input type="text" class="form-control" id="title-input" placeholder="Título do Livro">
+                <input type="text" class="form-control" id="title-input" name="title" placeholder="Título do Livro">
              
                 <label for="author-input">Autor(es)</label>
-                <input type="text" class="form-control" id="author-input" placeholder="Autor 1, Autor2, Autor3...">
+                <input type="text" class="form-control" id="author-input" name="author" placeholder="Autor 1, Autor2, Autor3...">
 
                 <label for="pages-input">Número de Páginas</label>
-                <input type="number" class="form-control" id="pages-input"min="1" max="9999" placeholder="">
+                <input type="number" class="form-control" id="pages-input"min="1" max="9999" name="pages" placeholder="">
 
                 <label for="genre-input">Gênero</label>
-                <select class="form-control" id="genre-input">
-                    <option >Escolha o Gênero</option>
-                    <option>Romance</option>
-                    <option>Terror</option>
-                    <option>Ação</option>
-                    <option>Ficção</option>
-                    <option>Distopia</option>
+                <select class="form-control" id="genre-input" name="genre[]" multiple="multiple">
+                    <option selected disabled>Escolha o Gênero</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Terror">Terror</option>
+                    <option value="Ação">Ação</option>
+                    <option value="Ficção">Ficção</option>
+                    <option value="Distopia">Distopia</option>
                 </select>
 
                 <label for="publi-input">Publicação</label>
-                <select class="form-control" id="publi-input">
-                    <option></option>
-                    <option>Nacional</option>
-                    <option>Não-Nacional</option>
+                <select class="form-control" id="publi-input" name="publi">
+                    <option selected disabled></option>
+                    <option value="Nacional">Nacional</option>
+                    <option value="Não-Nacional">Não-Nacional</option>
                 </select>
 
                 <label for="image-input">Capa</label>
-                <input type="file" class="form-control-file" id="image-input">
+                <input type="file" class="form-control-file" id="image-input" name="cover">
 
-                <label for="edit-input">Editora</label>
-                <input type="text" class="form-control" id="edit-input" placeholder="Editora">
+                <label for="company-input">Editora</label>
+                <input type="text" class="form-control" id="company-input" name="company" placeholder="Editora">
 
                 <label for="desc-input">Descrição</label>
-                <textarea class="form-control" id="desc-input" rows="3" maxlength="2000"></textarea>
+                <textarea class="form-control" id="desc-input" name="describe" rows="3" maxlength="2000"></textarea>
                 
                 <input type="submit" id="submit-button" value="Cadastrar">
 

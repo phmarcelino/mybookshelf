@@ -1,8 +1,12 @@
 <?php
 session_start();
 if(!isset($_SESSION['user'])){
-  header('location: mybookshelfproject/index.php');
+  header('location: /mybookshelfproject/index.php');
 }
+require_once "PHP/register-methods.php";
+require_once "PHP/connection.php";
+$conn = connectdb();
+$consulta = Book::getBook($conn);
 $user = $_SESSION['user'];
 
 ?>
@@ -14,7 +18,7 @@ $user = $_SESSION['user'];
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="css/home.css">
     <script src="https://kit.fontawesome.com/cfd199cf55.js" crossorigin="anonymous"></script>
-    <title>Mybookshelf Login</title>
+    <title>Mybookshelf Home</title>
   </head>
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -48,13 +52,15 @@ $user = $_SESSION['user'];
             <h2>
                 Meus Livros
             </h2>
-            <a href="cadastro.html" id="cadaster-menu">
+            <a href="cadastro.php" id="cadaster-menu">
                 Cadastrar livro
             </a>
         </div>
+
         <table class="table">
             <thead class="thead-dark">
               <tr>
+                <th></th>
                 <th scope="col">Capa</th>
                 <th scope="col">Título</th>
                 <th scope="col">Autor</th>
@@ -66,41 +72,26 @@ $user = $_SESSION['user'];
                 <th scope="col">Ações</th>
               </tr>
             </thead>
+            <?php 
+              while($colunas = $consulta->fetch(PDO::FETCH_ASSOC)){
+            ?>
             <tbody>
               <tr>
-                <th scope="row"><img href="#" alt="capa do livro"></th>
-                <td>Título do livro</td>
-                <td>Nome do Autor</td>
-                <td>Gênero do Livro</td>
-                <td>Nome da Editora</td>
-                <td>Número das Páginas</td>
-                <td>Nacional</td>
-                <td>Lorem Impsum</td>
-                <td><a href="#">Editar</a> <a href="#">Remover</a></td>
-              </tr>
-              <tr>
-                <th scope="row"><img href="#" alt="capa do livro"></th>
-                <td>Título do livro</td>
-                <td>Nome do Autor</td>
-                <td>Gênero do Livro</td>
-                <td>Nome da Editora</td>
-                <td>Número das Páginas</td>
-                <td>Nacional</td>
-                <td>Lorem Impsum</td>
-                <td><a href="#">Editar</a> <a href="#">Remover</a></td>
-              </tr>
-              <tr>
-                <th scope="row"><img href="#" alt="capa do livro"></th>
-                <td>Título do livro</td>
-                <td>Nome do Autor</td>
-                <td>Gênero do Livro</td>
-                <td>Nome da Editora</td>
-                <td>Número das Páginas</td>
-                <td>Nacional</td>
-                <td>Lorem Impsum</td>
-                <td><a href="#">Editar</a> <a href="#">Remover</a></td>
+                <form action="#" method="post">
+                  <td><input type = "checkbox" id = "check" name = "id_book" value = "book"></td>
+                  <td scope="row"><img href="img/Retângulo.png" alt="capa do livro"></td>
+                  <td><?php echo $colunas['title']; ?></td>
+                  <td><?php echo $colunas['author']; ?></td>
+                  <td><?php echo $colunas['genre']; ?></td>
+                  <td><?php echo $colunas['company']; ?></td>
+                  <td><?php echo $colunas['pages']; ?></td>
+                  <td><?php echo $colunas['publi']; ?></td>
+                  <td><?php echo $colunas['description'] ;?></td>
+                  <td><input type="submit" value="Editar"><input type="submit" value="Excluir"></td>
+                </form>
               </tr>
             </tbody>
+            <?php } ?>
           </table>
     </div>
 
