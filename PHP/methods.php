@@ -32,23 +32,29 @@ class Book
         pages = '{$book->pages}', 
         genre = '{$book->genre}',
         publi = '{$book->publi}',
-        cape = '{$book->cape}',
+        cape = '{$book->cover}',
         company = '{$book->company}',
-        descrvie = '{$book->describe}'
-        where id_user = '{$book->id_user}', and id_book = '';";
+        description = '{$book->describe}'
+        where id_user = '{$book->id_user}' and id_book = '{$book->id_book}';";
 
         return self::$conn->exec($sql);
     }
 
     public static function deleteBook($book)
     {
-        $sql = "DELETE FROM book where id_user = '{$book->id_user} and id_book = '{$book->id}'";
+        $sql = "DELETE FROM book where id_book in ({$book->id_book});";
         return self::$conn->exec($sql);
     }
 
-    public static function getBook($conn)
+    public static function getRow($conn)
     {
-        $consulta = $conn->prepare("SELECT * FROM book where id_user = {$_SESSION['id']}");
+        $consulta = $conn->prepare("SELECT count(*) FROM book where id_user = {$_SESSION['id']}");
+        $consulta->execute();
+        return $consulta;
+    }
+    public static function getBook($conn, $first_pg, $registers)
+    {
+        $consulta = $conn->prepare("SELECT * FROM book where id_user = {$_SESSION['id']} LIMIT $first_pg, $registers");
         $consulta->execute();
         return $consulta;
     }

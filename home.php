@@ -3,12 +3,14 @@ session_start();
 if(!isset($_SESSION['user'])){
   header('location: /mybookshelfproject/index.php');
 }
-require_once "PHP/register-methods.php";
+require_once "PHP/methods.php";
 require_once "PHP/connection.php";
 $conn = connectdb();
-$consulta = Book::getBook($conn);
+$registers = 5;
 $user = $_SESSION['user'];
-
+$page = (isset($_GET['pagina'])) ? (int)$_GET['pagina'] : 1;
+$first_pg = ($registers * $page) - $registers;
+$consulta = Book::getBook($conn, $first_pg, $registers);
 ?>
 
 <html lang="pt-br">
@@ -72,46 +74,61 @@ $user = $_SESSION['user'];
                 <th scope="col">Ações</th>
               </tr>
             </thead>
+            <form method="POST">
             <?php 
               while($colunas = $consulta->fetch(PDO::FETCH_ASSOC)){
+                $id = $colunas['id_book'];
+                $cover = $colunas['cape'];
             ?>
             <tbody>
               <tr>
-                <form action="#" method="post">
-                  <td><input type = "checkbox" id = "check" name = "id_book" value = "book"></td>
-                  <td scope="row"><img href="img/Retângulo.png" alt="capa do livro"></td>
+                
+                  <?php echo "<td><input type='checkbox' id='check'name='book[$id]' value='$id'></td>";?>
+                  <?php echo "<td scope='row'><img src='$cover' alt='capa do livro' style='max-width: 100px; max-height: 100px;'></td>";?>
                   <td><?php echo $colunas['title']; ?></td>
                   <td><?php echo $colunas['author']; ?></td>
                   <td><?php echo $colunas['genre']; ?></td>
                   <td><?php echo $colunas['company']; ?></td>
                   <td><?php echo $colunas['pages']; ?></td>
                   <td><?php echo $colunas['publi']; ?></td>
-                  <td><?php echo $colunas['description'] ;?></td>
-                  <td><input type="submit" value="Editar"><input type="submit" value="Excluir"></td>
-                </form>
+                  <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?php echo $colunas['description'] ;?></td>
+                  <td><input type="submit" id="submit-button" value="Editar" formaction="/mybookshelfproject/PHP/update-redirect.php"> <input type="submit" id="submit_button" value="Excluir" formaction="/mybookshelfproject/PHP/delete-action.php"></td>
               </tr>
             </tbody>
             <?php } ?>
+            </form>
           </table>
     </div>
 
     <!--Paginação-->
+    <?php 
+      $row = Book::getRow($conn);
+      $row_count = $row->fetchColumn();
+      $tot_Pages = $row_count / $registers;
+      $prev_Page= $page - 1;
+      $after_Page = $page + 1;
+    ?>
     <nav aria-label="Navegação de página exemplo">
         <ul class="pagination">
           <li class="page-item">
-            <a class="page-link" href="#" aria-label="Anterior">
+            <?php if ($prev_Page !=0) {?>
+            <a class="page-link" href="home.php?pagina=<?php echo $prev_Page ?>" aria-label="Anterior">
               <span aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
               <span class="sr-only">Anterior</span>
             </a>
+            <?php } ?>
           </li>
-          <li class="page-item"><a class="page-link" href="#">1<span class="sr-only">(atual)</span></a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <?php for($i = 1; $i < $tot_Pages + 1; $i++)
+          {
+            echo "<li class='page-item'><a class='page-link' href=\"home.php?pagina=$i\"> $i <span class='sr-only'>(atual)</span></a></li>";
+          } ?>
           <li class="page-item">
-            <a class="page-link" href="#" aria-label="Próximo">
+          <?php if ($after_Page <= $tot_Pages+1) { ?>
+            <a class="page-link" href="home.php?pagina=<?php echo $after_Page?>" aria-label="Próximo">
               <span aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
               <span class="sr-only">Próximo</span>
             </a>
+            <?php }?>  
           </li>
         </ul>
       </nav>

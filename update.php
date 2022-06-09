@@ -15,7 +15,7 @@ $erorr = $_SESSION['message'];
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="css/cadastro.css">
     <script src="https://kit.fontawesome.com/cfd199cf55.js" crossorigin="anonymous"></script>
-    <title>Mybookshelf Cadastro</title>
+    <title>Mybookshelf Atualizar-Livro</title>
   </head>
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -40,7 +40,7 @@ $erorr = $_SESSION['message'];
         </header>
         <div class="container">
             <h1>
-                Cadastro de Livro
+                Atualizar Livro
             </h1>
         </div>
         <div>
@@ -51,7 +51,7 @@ $erorr = $_SESSION['message'];
             }
             ?>
         </div>
-        <form action="/mybookshelfproject/PHP/book-register.php" enctype="multipart/form-data" method="post" class="container">
+        <form action="/mybookshelfproject/PHP/update-book.php" enctype="multipart/form-data" method="post" class="container">
             <div class="form-group col-md-8 offset-md-2">
                 <label for="title-input">Título</label>
                 <input type="text" class="form-control" id="title-input" name="title" placeholder="Título do Livro">
@@ -63,7 +63,7 @@ $erorr = $_SESSION['message'];
                 <input type="number" class="form-control" id="pages-input"min="1" max="9999" name="pages" placeholder="">
 
                 <label for="genre-input">Gênero</label>
-                <select class="form-control selectpicker" id="genre-input" name="genre[]" title="Escolha o Gênero" multiple>
+                <select class="form-control selectpicker" id="genre-input" name="genre[]" title="Escolha o Gênero" multiple="multiple">
                     <option value="Romance">Romance</option>
                     <option value="Terror">Terror</option>
                     <option value="Ação">Ação</option>
@@ -88,7 +88,7 @@ $erorr = $_SESSION['message'];
                 <label for="desc-input">Descrição</label>
                 <textarea class="form-control" id="desc-input" name="describe" rows="3" maxlength="2000"></textarea>
                 
-                <input type="submit" id="submit-button" value="Cadastrar">
+                <input type="submit" id="submit-button" value="Atualizar">
 
             </div>
             

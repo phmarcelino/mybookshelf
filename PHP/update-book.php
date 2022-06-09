@@ -3,16 +3,17 @@ session_start();
 require_once 'connection.php';
 require_once 'methods.php';
 
-$book = new stdClass;
-$book -> id_user = $_SESSION['id'];
-$book -> title = $_POST['title'];
-$book -> author = $_POST['author'];
-$book -> pages = $_POST['pages'];
-$book -> genre = implode(",", $_POST['genre']);
-$book -> publi = $_POST['publi'];
-$book -> cover = imgUpload($_FILES['cover']);
-$book -> company = $_POST['company'];
-$book -> describe = $_POST['describe'];
+$update = new stdClass;
+$update -> id_book = $_SESSION['id_book'];
+$update -> id_user = $_SESSION['id'];
+$update -> title = $_POST['title'];
+$update -> author = $_POST['author'];
+$update -> pages = $_POST['pages'];
+$update -> genre = implode(",", $_POST['genre']);
+$update -> publi = $_POST['publi'];
+$update -> cover = imgUpload($_FILES['cover']);
+$update -> company = $_POST['company'];
+$update -> describe = $_POST['describe'];
 $conn = connectdb();
 
 function imgUpload($file)
@@ -32,13 +33,13 @@ function imgUpload($file)
 
 if(in_array('', $_POST))
 {
-    $_SESSION['message'] = "Preencha todos os campos do formulário";
-    header("location: /mybookshelfproject/cadastro.php");
+    header("location: /mybookshelfproject/home.php");
 }
+
 else
 {
     Book::setConn($conn);
-    Book::addLivro($book);
+    Book::updateBook($update);
     header("location: /mybookshelfproject/home.php");
 }
 
