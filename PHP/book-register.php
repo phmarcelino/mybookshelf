@@ -23,22 +23,23 @@ function imgUpload($file)
         $imgdir = '/mybookshelfproject/img/';
         $img_name = $file['tmp_name'];
         $img_new_name = uniqid();
-        $extensao = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-        move_uploaded_file($img_name, $uploaddir . $img_new_name . "." . $extensao);
-        return $imgdir . $img_new_name . "." . $extensao;
+        $img_type = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        move_uploaded_file($img_name, $uploaddir . $img_new_name . "." . $img_type);
+        return $imgdir . $img_new_name . "." . $img_type;
     }
     else return false;
 }
 
 if(in_array('', $_POST))
 {
-    $_SESSION['message'] = "Preencha todos os campos do formulário";
-    header("location: /mybookshelfproject/cadastro.php");
+    $_SESSION['message'] = "*Preencha todos os campos do formulário*";
+    header("location: /mybookshelfproject/registration-book.php");
 }
+
 else
 {
     Book::setConn($conn);
-    Book::addLivro($book);
+    Book::addBook($book);
     header("location: /mybookshelfproject/home.php");
 }
 

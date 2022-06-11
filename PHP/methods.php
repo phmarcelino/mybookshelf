@@ -3,11 +3,12 @@ class Book
 {
     public static $conn;
 
-    public static function setConn( PDO $conn){
+    public static function setConn(PDO $conn)
+    {
         self::$conn = $conn;
     }
     
-    public static function addLivro($book)
+    public static function addBook($book)
     {
         $sql = "INSERT INTO book (id_user, title, author, pages, genre, publi, cape, company, description) values 
         ( 
@@ -19,8 +20,8 @@ class Book
             '{$book->publi}', 
             '{$book->cover}', 
             '{$book->company}', 
-            '{$book->describe}')";
-        
+            '{$book->describe}'
+        )";
         return self::$conn->exec($sql);
     }
 
@@ -36,7 +37,6 @@ class Book
         company = '{$book->company}',
         description = '{$book->describe}'
         where id_user = '{$book->id_user}' and id_book = '{$book->id_book}';";
-
         return self::$conn->exec($sql);
     }
 
@@ -48,15 +48,16 @@ class Book
 
     public static function getRow($conn)
     {
-        $consulta = $conn->prepare("SELECT count(*) FROM book where id_user = {$_SESSION['id']}");
-        $consulta->execute();
-        return $consulta;
+        $query = $conn->prepare("SELECT count(*) FROM book where id_user = {$_SESSION['id']}");
+        $query->execute();
+        return $query;
     }
+
     public static function getBook($conn, $first_pg, $registers)
     {
-        $consulta = $conn->prepare("SELECT * FROM book where id_user = {$_SESSION['id']} LIMIT $first_pg, $registers");
-        $consulta->execute();
-        return $consulta;
+        $query = $conn->prepare("SELECT * FROM book where id_user = {$_SESSION['id']} LIMIT $first_pg, $registers");
+        $query->execute();
+        return $query;
     }
 }
 

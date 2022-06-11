@@ -58,6 +58,40 @@ img
     background-color: white;
 }
 
+#check
+{
+    position: absolute;
+    margin-top: 2%;
+    vertical-align: middle;
+}
+#table
+{
+    vertical-align: middle;
+}
+#describe
+{
+    max-width: 200px; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: clip; 
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+#submit-button
+{
+    background-color: white;
+    border: none;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+#submit-button:hover
+{
+    color: #ff8c1a;
+}
 /*Pagination*/
 .pagination
 {

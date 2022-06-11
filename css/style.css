@@ -19,6 +19,12 @@
     margin-bottom:15%;
     max-width: 70%;
 }
+
+#error
+{
+    color: red;
+
+}
 .form-group
 {
     text-align: left;
@@ -50,18 +56,18 @@
     box-shadow: none;
 }
 
-#teste
+#division
 {
     display: flex;
     align-items: center;
 }
-#teste hr
+#division hr
 {
     flex: 1;
     border-color: #ff8c1a;
 }
 
-#teste p
+#division p
 {
     padding: 10px 10px 0 10px;
 }

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once 'connection.php';
-require_once 'verify.php';
+require_once 'verify-methods.php';
 
 $login_email = $_POST['email'];
 $login_pass = $_POST['password'];
@@ -10,7 +10,7 @@ Verify::setConn($conn);
 
 if (empty($login_email && $login_pass))
 {
-    $_SESSION['message'] = "Preencha todos os campos";
+    $_SESSION['message'] = "*Preencha todos os campos*";
     header('location: /mybookshelfproject/index.php');
 }
 else
@@ -24,7 +24,7 @@ else
     }
     else
     {
-        $_SESSION['message'] = "Usuário ou senha inválidos";
+        $_SESSION['message'] = "*Usuário ou senha inválidos*";
         unset($_SESSION);
         header('location: /mybookshelfproject/index.php');
     
