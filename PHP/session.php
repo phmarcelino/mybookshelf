@@ -5,4 +5,4 @@ if(session_status() !== PHP_SESSION_DISABLED)
     unset($_SESSION);
     session_destroy();
 }
-    header('location: /mybookshelfproject/index.php');
+    header('location: ../index.php');

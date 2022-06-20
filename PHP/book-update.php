@@ -15,32 +15,41 @@ $update -> cover = imgUpload($_FILES['cover']);
 $update -> company = $_POST['company'];
 $update -> describe = $_POST['describe'];
 $conn = connectdb();
-
+var_dump($update->cover);
 function imgUpload($file)
 {
-    if(!in_array('', $_POST))
+    $verify = $_FILES['cover']['name'];
+    $conn = connectdb();
+    $book = new Book();
+
+    if(!in_array('', $_POST) and $verify != null)
     {
-        $uploaddir = 'C:/wamp64/www/mybookshelfproject/img/';
-        $imgdir = '/mybookshelfproject/img/';
+        $uploaddir = '../img/';
+        $imgdir = '../img/';
         $img_name = $file['tmp_name'];
         $img_new_name = uniqid();
         $img_type = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
         move_uploaded_file($img_name, $uploaddir . $img_new_name . "." . $img_type);
         return $imgdir . $img_new_name . "." . $img_type;
     }
-    else return false;
+    else 
+    {   
+        $update = $book->getBookUpdate($conn);
+        return $update['cape'];
+    }
+
 }
 
 if(in_array('', $_POST))
 {
-    header("location: /mybookshelfproject/home.php");
+    header("location: ../home.php");
 }
 
 else
 {
     Book::setConn($conn);
     Book::updateBook($update);
-    header("location: /mybookshelfproject/home.php");
+    header("location: ../home.php");
 }
 
 ?>

@@ -11,11 +11,11 @@ if(!empty($delete -> id_book))
 {
     Book::setConn($conn);
     Book::deleteBook($delete);
-    header('location: /mybookshelfproject/home.php');
+    header('location: ../home.php');
 }
 else
 {
-header('location: /mybookshelfproject/home.php');
+header('location: ../home.php');
 }
 
 ?>

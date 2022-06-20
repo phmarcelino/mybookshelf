@@ -19,8 +19,8 @@ function imgUpload($file)
 {
     if(!in_array('', $_POST))
     {
-        $uploaddir = 'C:/wamp64/www/mybookshelfproject/img/';
-        $imgdir = '/mybookshelfproject/img/';
+        $uploaddir = '../img/';
+        $imgdir = '../img/';
         $img_name = $file['tmp_name'];
         $img_new_name = uniqid();
         $img_type = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
@@ -33,14 +33,14 @@ function imgUpload($file)
 if(in_array('', $_POST))
 {
     $_SESSION['message'] = "*Preencha todos os campos do formulário*";
-    header("location: /mybookshelfproject/registration-book.php");
+    header("location: ../registration-book.php");
 }
 
 else
 {
     Book::setConn($conn);
     Book::addBook($book);
-    header("location: /mybookshelfproject/home.php");
+    header("location: ../home.php");
 }
 
 ?>

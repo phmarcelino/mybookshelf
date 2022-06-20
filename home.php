@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['user'])){
-  header('location: /mybookshelfproject/index.php');
+  header('location: /index.php');
 }
 require_once "PHP/methods.php";
 require_once "PHP/connection.php";
@@ -32,7 +32,7 @@ $query = Book::getBook($conn, $first_pg, $registers);
         <nav class="navbar fixed-top" id="navbar"> 
           <img src="img/Camada 1.png" id="logomarca" alt="Mybookshelf">  
           <div class="navbar-nav">
-            <a href="/mybookshelfproject/PHP/session.php" id="logout-menu">
+            <a href="PHP/session.php" id="logout-menu">
               Logout
               <i class="fa-solid fa-arrow-right-from-bracket" id="logout-ar\row"></i>
             </a>
@@ -74,7 +74,7 @@ $query = Book::getBook($conn, $first_pg, $registers);
           <?php while($column = $query->fetch(PDO::FETCH_ASSOC)): ?>
             <tbody align="center">
               <tr>
-                <td><input type='checkbox' id='check'name='book[<?= $column['id_book'] ?>]' value='<?= $column['id_book'] ?>'></td>
+                <td><input type='checkbox' id='check' name='book[<?= $column['id_book']; ?>]' value='<?= $column['id_book'];?>'></td> 
                 <td scope='row'><img src='<?= $column['cape'] ?>' alt='capa do livro' style='max-width: 100px; max-height: 100px;'></td>
                 <td id="table"><?=$column['title']; ?></td>
                 <td id="table"><?=$column['author']; ?></td>
@@ -82,8 +82,8 @@ $query = Book::getBook($conn, $first_pg, $registers);
                 <td id="table"><?=$column['company']; ?></td>
                 <td id="table"><?=$column['pages']; ?></td>
                 <td id="table"><?=$column['publi']; ?></td>
-                <td id="describe"><?= $column['description']; ?></td>
-                <td><input type="submit" id="submit-button" value="Editar" formaction="/mybookshelfproject/PHP/redirect-update.php"><input type="submit" id="submit-button" value="Excluir" formaction="/mybookshelfproject/PHP/book-delete.php"></td>
+                <td id="describe"><?= '<p>' . $column['description'] .'</p>'; ?></td>
+                <td><input type="submit" id="submit-button" value="Editar" formaction="../PHP/redirect-update.php"><input type="submit" id="submit-button" value="Excluir" formaction="../PHP/book-delete.php"></td>
               </tr>
             </tbody>
           <?php endwhile; ?>

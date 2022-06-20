@@ -1,8 +1,14 @@
 <?php
 session_start();
+require_once 'PHP/methods.php';
+require_once 'PHP/connection.php';
 if(!isset($_SESSION['user'])){
-  header('location: /mybookshelfproject/index.php');
+  header('location: ../index.php');
 }
+$conn = connectdb();
+$book = new Book();
+$update = $book->getBookUpdate($conn);
+
 ?>
 <html lang="pt-br">
     <head>
@@ -29,7 +35,7 @@ if(!isset($_SESSION['user'])){
                         <img src="img/Camada 1.png" id="logomarca" alt="Mybookshelf">  
                     </a>
                     <div class="navbar-nav">
-                        <a href="/mybookshelfproject/PHP/session.php" id="logout-menu">
+                        <a href="../PHP/session.php" id="logout-menu">
                             Logout
                             <i class="fa-solid fa-arrow-right-from-bracket" id="logout-arrow"></i>
                         </a>
@@ -42,17 +48,17 @@ if(!isset($_SESSION['user'])){
                 Atualizar Livro
             </h1>
         </div>
-        <form action="/mybookshelfproject/PHP/book-update.php" enctype="multipart/form-data" method="post" class="container">
+        <form action="../PHP/book-update.php" enctype="multipart/form-data" method="post" class="container">
             <div class="form-group col-md-8 offset-md-2">
                 <label for="title-input">Título</label>
-                <input type="text" class="form-control" id="title-input" name="title" placeholder="Título do Livro">
+                <input type="text" class="form-control" id="title-input" name="title" placeholder="Título do Livro" value="<?= $update['title']; ?>">
              
                 <label for="author-input">Autor(es)</label>
-                <input type="text" class="form-control" id="author-input" name="author" placeholder="Autor 1, Autor2, Autor3...">
+                <input type="text" class="form-control" id="author-input" name="author" placeholder="Autor 1, Autor2, Autor3..." value="<?= $update['author']; ?>">
 
                 <label for="pages-input">Número de Páginas</label>
  
-                <input type="number" class="form-control" id="pages-input"min="1" max="9999" name="pages" placeholder="">
+                <input type="number" class="form-control" id="pages-input"min="1" max="9999" name="pages" value="<?= $update['pages']; ?>">
 
                 <label for="genre-input">Gênero</label>
                 <select class="form-control selectpicker" id="genre-input" name="genre[]" title="Escolha o Gênero" multiple="multiple">
@@ -74,12 +80,11 @@ if(!isset($_SESSION['user'])){
                 <label for="image-input">Capa</label>
                 <input type="file" class="form-control-file" id="image-input" name="cover">
 
-                <label for="/company-input">Editora</label>
-                <input type="text" class="form-control" id="company-input" name="company" placeholder="Editora">
+                <label for="company-input">Editora</label>
+                <input type="text" class="form-control" id="company-input" name="company" placeholder="Editora" value="<?= $update['company']; ?>">
 
                 <label for="desc-input">Descrição</label>
-                <textarea class="form-control" id="desc-input" name="describe" rows="3" maxlength="2000"></textarea>
-                
+                <textarea class="form-control" id="desc-input" name="describe" rows="3" maxlength="2000"><?= $update['description']; ?></textarea>
                 <input type="submit" id="submit-button" value="Atualizar">
             </div>
         </form>

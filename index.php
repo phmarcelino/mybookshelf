@@ -34,7 +34,7 @@
                     <p><?= $message ?></p>
                   </div>
                 <?php endif; ?>
-              <form action="/mybookshelfproject/PHP/verify-login.php" method="post">
+              <form action="PHP/verify-login.php" method="post">
                 <div class="form-group">
                   <label for="email-input">E-mail</label>
                   <input type="email" class="form-control" id="email-input" name="email" placeholder="Insira seu e-mail" required>

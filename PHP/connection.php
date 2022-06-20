@@ -12,7 +12,7 @@ function connectdb()
     $conn = new PDO("mysql:host={$host};port={$port};dbname={$dbname}", $user, $password);
     return $conn;
     }catch(Exception $e){
-        
-    }
+        echo 'Exceção capturada: ',  $e->getMessage(), "\n";
+    }   
 }
 ?>

@@ -70,13 +70,13 @@ img
 }
 #describe
 {
-    max-width: 200px; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: clip; 
+    overflow: hidden;
+    text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    max-height: 100px;
+    -webkit-line-clamp: 4; 
     -webkit-box-orient: vertical;
+    border-top: 0;
 }
 #submit-button
 {

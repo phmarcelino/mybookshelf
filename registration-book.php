@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['user'])){
-  header('location: /mybookshelfproject/index.php');
+  header('location: ../index.php');
 }
 if(isset($_SESSION['message'])){
 $error = $_SESSION['message'];
@@ -32,7 +32,7 @@ $error = $_SESSION['message'];
                         <img src="img/Camada 1.png" id="logomarca" alt="Mybookshelf">  
                     </a>
                     <div class="navbar-nav">
-                        <a href="/mybookshelfproject/PHP/session.php" id="logout-menu">
+                        <a href="PHP/session.php" id="logout-menu">
                             Logout
                             <i class="fa-solid fa-arrow-right-from-bracket" id="logout-arrow"></i>
                         </a>
@@ -46,7 +46,7 @@ $error = $_SESSION['message'];
             </h1>
         </div>
 
-        <form action="/mybookshelfproject/PHP/book-register.php" enctype="multipart/form-data" method="post" class="container">
+        <form action="PHP/book-register.php" enctype="multipart/form-data" method="post" class="container">
             <div class="form-group col-md-8 offset-md-2">
                 <div class="align-items-center d-flex">
                     <p id="text"> <?php if(isset($error)){echo $error;} ?> </p>

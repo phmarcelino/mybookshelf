@@ -5,7 +5,7 @@ class Book
 
     public static function setConn(PDO $conn)
     {
-        self::$conn = $conn;
+        return self::$conn = $conn;
     }
     
     public static function addBook($book)
@@ -55,9 +55,16 @@ class Book
 
     public static function getBook($conn, $first_pg, $registers)
     {
-        $query = $conn->prepare("SELECT * FROM book where id_user = {$_SESSION['id']} LIMIT $first_pg, $registers");
+            $query = $conn->prepare("SELECT * FROM book where id_user = {$_SESSION['id']} LIMIT $first_pg, $registers");
+            $query->execute();
+            return $query;
+    }
+
+    public static function getBookUpdate($conn)
+    {
+        $query = $conn->prepare("SELECT * FROM book where id_book = {$_SESSION['id_book']}");
         $query->execute();
-        return $query;
+        return $query->fetch(PDO::FETCH_ASSOC);
     }
 }
 

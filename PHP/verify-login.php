@@ -11,7 +11,7 @@ Verify::setConn($conn);
 if (empty($login_email && $login_pass))
 {
     $_SESSION['message'] = "*Preencha todos os campos*";
-    header('location: /mybookshelfproject/index.php');
+    header('location: ../index.php');
 }
 else
 {   
@@ -20,13 +20,13 @@ else
     if($querry) 
     {
         $_SESSION = get_object_vars($querry);
-        header('location: /mybookshelfproject/home.php');
+        header('location: ../home.php');
     }
     else
     {
         $_SESSION['message'] = "*Usuário ou senha inválidos*";
         unset($_SESSION);
-        header('location: /mybookshelfproject/index.php');
+        header('location: ../index.php');
     
     }
 }
