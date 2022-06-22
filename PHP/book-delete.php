@@ -5,13 +5,16 @@ require_once 'methods.php';
 
 if(empty($_POST['book']))
 {
-    $delete = $_GET;
+    $delete = new stdClass;
+    $delete = implode($_GET);
+    print_r($delete);
 }
 
 else
 {
     $delete = new stdClass;
-    $delete -> id_book = implode(", ",$_POST['book']);
+    $delete = implode(", ",$_POST['book']);
+    print_r($delete);
 }
 
 $conn = connectdb();

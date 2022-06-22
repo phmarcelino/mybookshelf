@@ -42,7 +42,7 @@ class Book
 
     public static function deleteBook($book)
     {
-        $sql = "DELETE FROM book where id_book in ({$book->id_book});";
+        $sql = "DELETE FROM book where id_book in ({$book});";
         return self::$conn->exec($sql);
     }
 
