@@ -29,8 +29,8 @@ $query = Book::getBook($conn, $first_pg, $registers);
   <body>
     <header>
       <div class="container" id="nav">
-        <nav class="navbar fixed-top" id="navbar"> 
-          <img src="img/Camada 1.png" id="logomarca" alt="Mybookshelf">  
+        <nav class="navbar fixed-top" id="navbar">
+          <img src="img/Camada 1.png" id="logomarca" alt="Mybookshelf">
           <div class="navbar-nav">
             <a href="PHP/session.php" id="logout-menu">
               Logout
@@ -74,7 +74,7 @@ $query = Book::getBook($conn, $first_pg, $registers);
           <?php while($column = $query->fetch(PDO::FETCH_ASSOC)): ?>
             <tbody align="center">
               <tr>
-                <td><input type='checkbox' id='check' name='book[<?= $column['id_book']; ?>]' value='<?= $column['id_book'];?>'></td> 
+                <td><input type='checkbox' id='check' name='book[<?= $column['id_book']; ?>]' value='<?= $column['id_book'];?>'></td>
                 <td scope='row'><img src='<?= $column['cape'] ?>' alt='capa do livro' style='max-width: 100px; max-height: 100px;'></td>
                 <td id="table"><?=$column['title']; ?></td>
                 <td id="table"><?=$column['author']; ?></td>
@@ -91,7 +91,7 @@ $query = Book::getBook($conn, $first_pg, $registers);
       </table>
     </div>
     <!--Paginação-->
-    <?php 
+    <?php
       $row = Book::getRow($conn);
       $row_count = $row->fetchColumn();
       $tot_Pages = $row_count / $registers;
@@ -117,7 +117,7 @@ $query = Book::getBook($conn, $first_pg, $registers);
               <span aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
               <span class="sr-only">Próximo</span>
             </a>
-          <?php endif; ?>  
+          <?php endif; ?>
         </li>
       </ul>
     </nav>

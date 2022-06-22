@@ -28,8 +28,8 @@ $error = $_SESSION['message'];
         <header>
             <div class="container" id="nav">
                 <nav class="navbar fixed-top" id="navbar">
-                    <a id="logo-image" href="home.php"> 
-                        <img src="img/Camada 1.png" id="logomarca" alt="Mybookshelf">  
+                    <a id="logo-image" href="home.php">
+                        <img src="img/Camada 1.png" id="logomarca" alt="Mybookshelf">
                     </a>
                     <div class="navbar-nav">
                         <a href="PHP/session.php" id="logout-menu">
@@ -53,7 +53,7 @@ $error = $_SESSION['message'];
                 </div>
                 <label for="title-input">Título</label>
                 <input type="text" class="form-control" id="title-input" name="title" placeholder="Título do Livro">
-             
+
                 <label for="author-input">Autor(es)</label>
                 <input type="text" class="form-control" id="author-input" name="author" placeholder="Autor 1, Autor2, Autor3...">
 
@@ -85,7 +85,7 @@ $error = $_SESSION['message'];
 
                 <label for="desc-input">Descrição</label>
                 <textarea class="form-control" id="desc-input" name="describe" rows="3" maxlength="2000"></textarea>
-                
+
                 <input type="submit" id="submit-button" value="Cadastrar">
 
             </div>

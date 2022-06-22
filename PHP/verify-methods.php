@@ -2,9 +2,9 @@
 
 class Verify
 {
-    
+
     public static $conn;
-    
+
     public static function setConn( PDO $conn)
     {
         self::$conn = $conn;

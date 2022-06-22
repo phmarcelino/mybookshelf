@@ -26,13 +26,13 @@ $update = $book->getBookUpdate($conn);
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <!--Script Multiple-Select-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-    
+
     <body>
         <header>
             <div class="container" id="nav">
-                <nav class="navbar fixed-top" id="navbar"> 
-                    <a id="logo-image" href="home.php"> 
-                        <img src="img/Camada 1.png" id="logomarca" alt="Mybookshelf">  
+                <nav class="navbar fixed-top" id="navbar">
+                    <a id="logo-image" href="home.php">
+                        <img src="img/Camada 1.png" id="logomarca" alt="Mybookshelf">
                     </a>
                     <div class="navbar-nav">
                         <a href="../PHP/session.php" id="logout-menu">
@@ -52,12 +52,12 @@ $update = $book->getBookUpdate($conn);
             <div class="form-group col-md-8 offset-md-2">
                 <label for="title-input">Título</label>
                 <input type="text" class="form-control" id="title-input" name="title" placeholder="Título do Livro" value="<?= $update['title']; ?>">
-             
+
                 <label for="author-input">Autor(es)</label>
                 <input type="text" class="form-control" id="author-input" name="author" placeholder="Autor 1, Autor2, Autor3..." value="<?= $update['author']; ?>">
 
                 <label for="pages-input">Número de Páginas</label>
- 
+
                 <input type="number" class="form-control" id="pages-input"min="1" max="9999" name="pages" value="<?= $update['pages']; ?>">
 
                 <label for="genre-input">Gênero</label>

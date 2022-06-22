@@ -23,6 +23,7 @@ img
     align-self: center;
     margin-left: 12%;
 }
+
 .navbar-nav
 {
     margin-right: 12%;
@@ -64,20 +65,23 @@ img
     margin-top: 2%;
     vertical-align: middle;
 }
+
 #table
 {
     vertical-align: middle;
 }
+
 #describe
 {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     max-height: 100px;
-    -webkit-line-clamp: 4; 
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     border-top: 0;
 }
+
 #submit-button
 {
     background-color: white;
@@ -92,12 +96,14 @@ img
 {
     color: #ff8c1a;
 }
+
 /*Pagination*/
 .pagination
 {
     justify-content: center;
 
 }
+
 .pagination a
 {
     color: black;
@@ -115,13 +121,10 @@ img
     background-color: #ff8c1a;
 }
 
-
 .pagination a:focus
 {
     box-shadow: none;
 }
-
-
 
 .fa-solid
 {

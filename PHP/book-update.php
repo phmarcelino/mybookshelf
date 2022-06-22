@@ -32,8 +32,8 @@ function imgUpload($file)
         move_uploaded_file($img_name, $uploaddir . $img_new_name . "." . $img_type);
         return $imgdir . $img_new_name . "." . $img_type;
     }
-    else 
-    {   
+    else
+    {
         $update = $book->getBookUpdate($conn);
         return $update['cape'];
     }

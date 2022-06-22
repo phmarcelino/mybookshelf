@@ -6,7 +6,7 @@
     text-align: center;
     max-width: 100%;
 }
-  
+
 #form
 {
     margin: 0 auto;
@@ -25,6 +25,7 @@
     color: red;
 
 }
+
 .form-group
 {
     text-align: left;
@@ -51,6 +52,7 @@
     background-color: white;
     color: #ff8c1a;
 }
+
 #login:focus
 {
     box-shadow: none;
@@ -61,6 +63,7 @@
     display: flex;
     align-items: center;
 }
+
 #division hr
 {
     flex: 1;
@@ -78,7 +81,7 @@ form, a
     text-decoration: none;
 }
 
-#design 
+#design
 {
     background-color: rgb(255, 140, 26);
     position: absolute;
@@ -88,4 +91,3 @@ form, a
     height: 47px;
     z-index: 6;
 }
-  

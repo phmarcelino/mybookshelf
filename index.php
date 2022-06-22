@@ -52,7 +52,7 @@
                 </div>
                 <a href="#" id="register">Cadastre-se !</a>
               </form>
-            </div>              
+            </div>
           </div>
         </div>
     </body>

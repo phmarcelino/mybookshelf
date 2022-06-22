@@ -17,6 +17,7 @@
     align-self: center;
     margin-left: 12%;
 }
+
 .navbar-nav
 {
     margin-right: 12%;
@@ -34,11 +35,13 @@
     display: flex;
     margin: auto;
 }
+
 div > label
 {
     margin-top: 20px;
     margin-bottom: 0;
 }
+
 .form-group input:focus
 {
     border: 2px solid;
@@ -83,6 +86,7 @@ div > label
     color: #ff8c1a;
     border: 1px solid #ff8c1a;
 }
+
 textarea
 {
     resize: none;

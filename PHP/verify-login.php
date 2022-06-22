@@ -14,10 +14,10 @@ if (empty($login_email && $login_pass))
     header('location: ../index.php');
 }
 else
-{   
+{
 
     $querry = Verify::authentication($login_email, $login_pass);
-    if($querry) 
+    if($querry)
     {
         $_SESSION = get_object_vars($querry);
         header('location: ../home.php');
@@ -27,7 +27,7 @@ else
         $_SESSION['message'] = "*Usuário ou senha inválidos*";
         unset($_SESSION);
         header('location: ../index.php');
-    
+
     }
 }
 

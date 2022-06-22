@@ -7,19 +7,19 @@ class Book
     {
         return self::$conn = $conn;
     }
-    
+
     public static function addBook($book)
     {
-        $sql = "INSERT INTO book (id_user, title, author, pages, genre, publi, cape, company, description) values 
-        ( 
-            '{$book->id_user}', 
-            '{$book->title}', 
-            '{$book->author}', 
-            '{$book->pages}', 
-            '{$book->genre}', 
-            '{$book->publi}', 
-            '{$book->cover}', 
-            '{$book->company}', 
+        $sql = "INSERT INTO book (id_user, title, author, pages, genre, publi, cape, company, description) values
+        (
+            '{$book->id_user}',
+            '{$book->title}',
+            '{$book->author}',
+            '{$book->pages}',
+            '{$book->genre}',
+            '{$book->publi}',
+            '{$book->cover}',
+            '{$book->company}',
             '{$book->describe}'
         )";
         return self::$conn->exec($sql);
@@ -27,10 +27,10 @@ class Book
 
     public static function updateBook($book)
     {
-        $sql = "UPDATE book SET 
+        $sql = "UPDATE book SET
         title = '{$book->title}',
-        author = '{$book->author}', 
-        pages = '{$book->pages}', 
+        author = '{$book->author}',
+        pages = '{$book->pages}',
         genre = '{$book->genre}',
         publi = '{$book->publi}',
         cape = '{$book->cover}',
