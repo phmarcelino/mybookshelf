@@ -90,6 +90,8 @@ img
     margin-left: auto;
     margin-right: auto;
     cursor: pointer;
+    text-decoration: none;
+    color: black;
 }
 
 #submit-button:hover
