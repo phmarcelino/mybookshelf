@@ -14,11 +14,11 @@ class Verify
 
     }
 
-    public function getUser($user)
-    {
-        $sql = get_object_vars($user);
-        return $sql['user'];
-    }
+    // public function getUser($user)
+    // {
+    //     $sql = get_object_vars($user);
+    //     return $sql['user'];
+    // }
 
     public function authentication($email, $password)
     {

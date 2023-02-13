@@ -1,4 +1,15 @@
 /*Login*/
+#design
+{
+    background-color: rgb(255, 140, 26);
+    position: absolute;
+    left: 0px;
+    top: -1px;
+    width: 1920px;
+    height: 47px;
+    z-index: 6;
+}
+
 #form-area
 {
     margin:auto;
@@ -79,15 +90,4 @@ form, a
 {
     color: black;
     text-decoration: none;
-}
-
-#design
-{
-    background-color: rgb(255, 140, 26);
-    position: absolute;
-    left: 0px;
-    top: -1px;
-    width: 1920px;
-    height: 47px;
-    z-index: 6;
 }
